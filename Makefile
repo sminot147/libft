@@ -6,7 +6,7 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 14:53:08 by sminot            #+#    #+#              #
-#    Updated: 2024/11/20 15:07:21 by sminot           ###   ########.fr        #
+#    Updated: 2024/11/20 17:48:07 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = libft.a
 
 CHAR_DIR = src/char/
 
-CHAR = ft_isalnum.c\
-	ft_isalpha.c\
+CHAR = ft_isalpha.c\
+	ft_isalnum.c\
 	ft_isascii.c\
 	ft_isdigit.c\
 	ft_isprint.c\
@@ -84,26 +84,30 @@ FILEB = $(addprefix $(LST_DIR), $(LST))
 OBJ = $(FILE:.c=.o)
 OBJB = $(FILEB:.c=.o)
 
+DEPS= $(OBJ:.o=.d) $(OBJB:.o=.d)
+
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE)
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -MMD
 INCLUDE = include
 
 AR = ar -rsc
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) $(INCLUDE)/libft.h
+$(NAME) : $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
 clean :
-	rm -f $(OBJ) $(OBJB)
+	rm -f $(OBJ) $(OBJB) $(DEPS)
 
 fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
 
-bonus : $(OBJ) $(OBJB) $(INCLUDE)/libft.h
+bonus : $(OBJ) $(OBJB)
 	$(AR) $(NAME) $(OBJ) $(OBJB)
+
+-include $(DEPS)
 
 .PHONY : all, clean, fclean, re, bonus
