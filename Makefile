@@ -3,51 +3,33 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sminot <sminot@student.42.fr>              +#+  +:+       +#+         #
+#    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 14:53:08 by sminot            #+#    #+#              #
-#    Updated: 2024/11/13 15:31:41 by sminot           ###   ########.fr        #
+#    Updated: 2024/11/20 15:07:21 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-FILE = ft_isalnum.c\
+CHAR_DIR = src/char/
+
+CHAR = ft_isalnum.c\
 	ft_isalpha.c\
 	ft_isascii.c\
 	ft_isdigit.c\
 	ft_isprint.c\
-	ft_strlen.c\
-	ft_memset.c\
-	ft_memcpy.c\
-	ft_bzero.c\
-	ft_memmove.c\
-	ft_strlcpy.c\
-	ft_strlcat.c\
 	ft_toupper.c\
 	ft_tolower.c\
-	ft_strchr.c\
-	ft_strrchr.c\
-	ft_strncmp.c\
-	ft_memchr.c\
-	ft_strnstr.c\
-	ft_atoi.c\
-	ft_calloc.c\
-	ft_memcmp.c\
-	ft_strdup.c\
-	ft_substr.c\
-	ft_strjoin.c\
-	ft_strtrim.c\
-	ft_split.c\
-	ft_itoa.c\
-	ft_strmapi.c\
-	ft_striteri.c\
-	ft_putchar_fd.c\
-	ft_putstr_fd.c\
-	ft_putnbr_fd.c\
-	ft_putendl_fd.c\
 
-FILEB = ft_lstnew_bonus.c\
+INT_DIR = src/int/
+
+INT = ft_atoi.c\
+	ft_itoa.c\
+
+LST_DIR = src/lst/
+
+LST = ft_lstnew_bonus.c\
 	ft_lstadd_front_bonus.c\
 	ft_lstsize_bonus.c\
 	ft_lstlast_bonus.c\
@@ -57,17 +39,60 @@ FILEB = ft_lstnew_bonus.c\
 	ft_lstiter_bonus.c\
 	ft_lstmap_bonus.c\
 
+MEM_DIR = src/mem/
+
+MEM = ft_bzero.c\
+	ft_calloc.c\
+	ft_memchr.c\
+	ft_memcmp.c\
+	ft_memcpy.c\
+	ft_memmove.c\
+	ft_memset.c\
+
+PUT_DIR = src/put/
+
+PUT = ft_putchar_fd.c\
+	ft_putstr_fd.c\
+	ft_putnbr_fd.c\
+	ft_putendl_fd.c\
+
+STR_DIR = src/str/
+
+STR = ft_split.c\
+	ft_strchr.c\
+	ft_strdup.c\
+	ft_striteri.c\
+	ft_strjoin.c\
+	ft_strlcat.c\
+	ft_strlcpy.c\
+	ft_strlen.c\
+	ft_strmapi.c\
+	ft_strncmp.c\
+	ft_strnstr.c\
+	ft_strrchr.c\
+	ft_strtrim.c\
+	ft_substr.c\
+
+FILE = $(addprefix $(CHAR_DIR), $(CHAR))\
+	$(addprefix $(INT_DIR), $(INT))\
+	$(addprefix $(MEM_DIR), $(MEM))\
+	$(addprefix $(PUT_DIR), $(PUT))\
+	$(addprefix $(STR_DIR), $(STR))\
+
+FILEB = $(addprefix $(LST_DIR), $(LST))
+
 OBJ = $(FILE:.c=.o)
 OBJB = $(FILEB:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE)
+INCLUDE = include
 
 AR = ar -rsc
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) libft.h
+$(NAME) : $(OBJ) $(INCLUDE)/libft.h
 	$(AR) $(NAME) $(OBJ)
 
 clean :
@@ -78,7 +103,7 @@ fclean : clean
 
 re : fclean all
 
-bonus : $(OBJ) $(OBJB) libft.h
+bonus : $(OBJ) $(OBJB) $(INCLUDE)/libft.h
 	$(AR) $(NAME) $(OBJ) $(OBJB)
 
 .PHONY : all, clean, fclean, re, bonus
