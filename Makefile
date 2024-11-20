@@ -6,7 +6,7 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 14:53:08 by sminot            #+#    #+#              #
-#    Updated: 2024/11/20 17:48:07 by sminot           ###   ########.fr        #
+#    Updated: 2024/11/20 18:41:41 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,8 +81,10 @@ FILE = $(addprefix $(CHAR_DIR), $(CHAR))\
 
 FILEB = $(addprefix $(LST_DIR), $(LST))
 
-OBJ = $(FILE:.c=.o)
-OBJB = $(FILEB:.c=.o)
+OBJ_DIR = obj
+
+OBJ = $(addprefix $(OBJ_DIR)/, $(FILE:.c=.o))
+OBJB = $(addprefix $(OBJ_DIR)/, $(FILEB:.c=.o))
 
 DEPS= $(OBJ:.o=.d) $(OBJB:.o=.d)
 
@@ -92,13 +94,17 @@ INCLUDE = include
 
 AR = ar -rsc
 
+$(OBJ_DIR)/%.o : %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
 clean :
-	rm -f $(OBJ) $(OBJB) $(DEPS)
+	rm -rf $(OBJ_DIR)
 
 fclean : clean
 	rm -f $(NAME)
