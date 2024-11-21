@@ -3,28 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <sminot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:23:16 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/18 20:02:19 by sminot           ###   ########.fr       */
+/*   Updated: 2024/11/21 04:46:00 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	len_str(int n)
-{
-	if (n > 9 || n < -9)
-		return (1 + len_str(n / 10));
-	return (1);
-}
-
-static int	ft_abs(int nb)
-{
-	if (nb < 0)
-		return (-nb);
-	return (nb);
-}
+static int	len_str(int n);
+static int	ft_abs(int nb);
 
 char	*ft_itoa(int n)
 {
@@ -48,4 +37,18 @@ char	*ft_itoa(int n)
 	if (sgn)
 		str[0] = '-';
 	return (str);
+}
+
+static int	len_str(int n)
+{
+	if (n > 9 || n < -9)
+		return (1 + len_str(n / 10));
+	return (1);
+}
+
+static int	ft_abs(int nb)
+{
+	if (nb < 0)
+		return (-nb);
+	return (nb);
 }

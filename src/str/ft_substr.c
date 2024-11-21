@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+static char	*a_bit_null(void);
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	i;
@@ -22,13 +24,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	while (s[i] && i < start + len)
 		i++;
 	if (i < start)
-	{
-		str = malloc(1 * sizeof(char));
-		if (str == NULL)
-			return (NULL);
-		str[0] = '\0';
-		return (str);
-	}
+		return (a_bit_null());
 	str = malloc((i - start + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
@@ -36,5 +32,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	while (s[start + ++j] && j < len)
 		str[j] = s[start + j];
 	str[j] = '\0';
+	return (str);
+}
+
+static char	*a_bit_null(void)
+{
+	char	*str;
+
+	str = malloc(1 * sizeof(char));
+	if (!str)
+		return (NULL);
+	str[0] = '\0';
 	return (str);
 }

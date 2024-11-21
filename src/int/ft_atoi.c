@@ -6,19 +6,13 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 20:22:45 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/18 20:22:52 by sminot           ###   ########.fr       */
+/*   Updated: 2024/11/21 04:45:25 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	result_overflow(int sgn)
-{
-	if (sgn > 0)
-		return (-1);
-	else
-		return (0);
-}
+static int	result_overflow(int sgn);
 
 int	ft_atoi(const char *str)
 {
@@ -46,4 +40,12 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return ((int)(sgn * nb));
+}
+
+static int	result_overflow(int sgn)
+{
+	if (sgn > 0)
+		return (-1);
+	else
+		return (0);
 }
