@@ -6,35 +6,84 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:54:40 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/20 12:31:31 by sminot           ###   ########.fr       */
+/*   Updated: 2024/11/25 18:27:36 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_putnbr_positive(int nb, char *base, int fd)
+static ssize_t	ft_put_pos_nb(long int nb, char *base, int fd, size_t len_base)
 {
-	if (nb)
+	ssize_t	nb_char_writed;
+
+	if (nb > 9)
 	{
-		ft_putnbr_positive(nb / 10, base, fd);
-		write(fd, &base[nb % 10], 1);
+		nb_char_writed = ft_put_pos_nb(nb / len_base, base, fd, len_base);
+		if (nb_char_writed == -1)
+			return (-1);
+		if (write(fd, &base[nb % 10], 1) != 1)
+			return (-1);
+		return (++nb_char_writed);
+	}
+	else
+	{
+		if (write(fd, &base[nb % 10], 1) != 1)
+			return (-1);
+		return (1);
 	}
 }
 
-void	ft_putnbr_fd(int nb, int fd)
+static int	ft_base_is_valable(char *base, int len_base)
 {
-	char	*base;
+	int	i;
+	int	j;
 
-	base = "0123456789";
-	if (!nb)
-		write(fd, "0", 1);
-	else if (nb == INT_MIN)
-		write(fd, "-2147483648", 11);
-	else if (nb < 0)
+	i = 0;
+	if (len_base <= 1)
+		return (-1);
+	while (i < len_base)
 	{
-		write(fd, "-", 1);
-		ft_putnbr_positive(-nb, base, fd);
+		if (base [i] == '-' || base[i] == '+')
+			return (-1);
+		j = i + 1;
+		while (j < len_base)
+		{
+			if (base[i] == base[j])
+				return (-1);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+ssize_t	ft_putnbr_in_base_fd(int nb, char *base, int fd)
+{
+	ssize_t	nb_char_writed;
+	size_t	len_base;
+
+	len_base = ft_strlen(base);
+	if (ft_base_is_valable(base, len_base) == -1)
+		return (-1);
+	if (nb < 0)
+	{
+		if (write(fd, "-", 1) == -1)
+			return (-1);
+		nb_char_writed = ft_put_pos_nb(-(long int)nb, base, fd, len_base);
+		if (nb_char_writed == -1)
+			return (-1);
+		return (++nb_char_writed);
 	}
 	else
-		ft_putnbr_positive(nb, base, fd);
+		return (ft_put_pos_nb(nb, base, fd, len_base));
+}
+
+ssize_t	ft_putnbr_fd(int nb, int fd)
+{
+	return (ft_putnbr_in_base_fd(nb, "0123456789", fd));
+}
+
+#include <stdio.h>
+int main (void){
+	printf ("\n%li\n", ft_putnbr_fd(INT_MIN,1));
 }

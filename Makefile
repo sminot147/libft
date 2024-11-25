@@ -6,7 +6,7 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 14:53:08 by sminot            #+#    #+#              #
-#    Updated: 2024/11/20 18:41:41 by sminot           ###   ########.fr        #
+#    Updated: 2024/11/25 11:56:23 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,3 +117,6 @@ bonus : $(OBJ) $(OBJB)
 -include $(DEPS)
 
 .PHONY : all, clean, fclean, re, bonus
+
+#OBJ = $(subst $(SRC_DIR),$(SRC_OBJ),$(FILE:.c=.o))
+#Mettre un pip | pour regarder si la regle existe.
