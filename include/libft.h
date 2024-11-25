@@ -61,7 +61,8 @@ ssize_t	ft_putchar_fd(char c, int fd);
 ssize_t	ft_putstr_fd(char *s, int fd);
 ssize_t	ft_putendl_fd(char *s, int fd);
 ssize_t	ft_putnbr_fd(int n, int fd);
-ssize_t	ft_putnbr_in_base_fd(int nb, char *base, int fd);
+//ne fonctoinne pas avec LONG_INT_MIN
+ssize_t	putnbr_base_fd(long int nb, char *base, int fd);
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);

@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:54:40 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/25 18:27:36 by sminot           ###   ########.fr       */
+/*   Updated: 2024/11/25 18:46:40 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static int	ft_base_is_valable(char *base, int len_base)
 	return (1);
 }
 
-ssize_t	ft_putnbr_in_base_fd(int nb, char *base, int fd)
+//ne fonctoinne pas avec LONG_INT_MIN
+ssize_t	putnbr_base_fd(long int nb, char *base, int fd)
 {
 	ssize_t	nb_char_writed;
 	size_t	len_base;
@@ -69,7 +70,7 @@ ssize_t	ft_putnbr_in_base_fd(int nb, char *base, int fd)
 	{
 		if (write(fd, "-", 1) == -1)
 			return (-1);
-		nb_char_writed = ft_put_pos_nb(-(long int)nb, base, fd, len_base);
+		nb_char_writed = ft_put_pos_nb(-nb, base, fd, len_base);
 		if (nb_char_writed == -1)
 			return (-1);
 		return (++nb_char_writed);
@@ -81,9 +82,4 @@ ssize_t	ft_putnbr_in_base_fd(int nb, char *base, int fd)
 ssize_t	ft_putnbr_fd(int nb, int fd)
 {
 	return (ft_putnbr_in_base_fd(nb, "0123456789", fd));
-}
-
-#include <stdio.h>
-int main (void){
-	printf ("\n%li\n", ft_putnbr_fd(INT_MIN,1));
 }
