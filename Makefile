@@ -6,7 +6,7 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 14:53:08 by sminot            #+#    #+#              #
-#    Updated: 2024/11/25 11:56:23 by sminot           ###   ########.fr        #
+#    Updated: 2024/11/27 11:54:33 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,10 +51,10 @@ MEM = ft_bzero.c\
 
 PUT_DIR = src/put/
 
-PUT = ft_putchar_fd.c\
-	ft_putstr_fd.c\
-	ft_putnbr_fd.c\
-	ft_putendl_fd.c\
+PUT = putchar_fd.c\
+	putstr_fd.c\
+	putnbr_fd.c\
+	putendl_fd.c\
 
 STR_DIR = src/str/
 
