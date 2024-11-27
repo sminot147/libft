@@ -67,10 +67,10 @@ typedef struct base
 	size_t	len;
 }	t_base;
 
-ssize_t	ft_putchar_fd(char c, int fd);
-ssize_t	ft_putstr_fd(char *s, int fd);
-ssize_t	ft_putendl_fd(char *s, int fd);
-ssize_t	ft_putnbr_fd(int n, int fd);
+ssize_t	putchar_fd(char c, int fd);
+ssize_t	putstr_fd(char *s, int fd);
+ssize_t	putendl_fd(char *s, int fd);
+ssize_t	putnbr_fd(int n, int fd);
 ssize_t	putnb_base_fd(long long int nb, char *base, int fd);
 ssize_t	write_nb(unsigned long long int nb, t_base base, int fd);
 
@@ -81,6 +81,7 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);

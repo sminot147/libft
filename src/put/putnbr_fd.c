@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:54:40 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/27 11:39:20 by sminot           ###   ########.fr       */
+/*   Updated: 2024/11/27 11:53:13 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ ssize_t	write_nb(unsigned long long int nb, t_base base, int fd)
 	}
 }
 
-static int	ft_base_is_valable(t_base base)
+static int	base_is_valable(t_base base)
 {
 	size_t	i;
 	size_t	j;
@@ -64,7 +64,7 @@ ssize_t	putnb_base_fd(long long int nb, char *base_str, int fd)
 
 	base.str = base_str;
 	base.len = ft_strlen(base_str);
-	if (ft_base_is_valable(base) == -1)
+	if (base_is_valable(base) == -1)
 		return (-1);
 	if (nb < 0)
 	{
@@ -79,7 +79,7 @@ ssize_t	putnb_base_fd(long long int nb, char *base_str, int fd)
 		return (write_nb((unsigned long long int)nb, base, fd));
 }
 
-ssize_t	ft_putnbr_fd(int nb, int fd)
+ssize_t	putnbr_fd(int nb, int fd)
 {
 	return (putnb_base_fd(nb, "0123456789", fd));
 }
