@@ -6,49 +6,49 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:54:40 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/25 18:46:40 by sminot           ###   ########.fr       */
+/*   Updated: 2024/11/27 11:39:20 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static ssize_t	ft_put_pos_nb(long int nb, char *base, int fd, size_t len_base)
+ssize_t	write_nb(unsigned long long int nb, t_base base, int fd)
 {
 	ssize_t	nb_char_writed;
 
-	if (nb > 9)
+	if (nb > base.len)
 	{
-		nb_char_writed = ft_put_pos_nb(nb / len_base, base, fd, len_base);
+		nb_char_writed = write_nb(nb / base.len, base, fd);
 		if (nb_char_writed == -1)
 			return (-1);
-		if (write(fd, &base[nb % 10], 1) != 1)
+		if (write(fd, &base.str[nb % base.len], 1) != 1)
 			return (-1);
 		return (++nb_char_writed);
 	}
 	else
 	{
-		if (write(fd, &base[nb % 10], 1) != 1)
+		if (write(fd, &base.str[nb % base.len], 1) != 1)
 			return (-1);
 		return (1);
 	}
 }
 
-static int	ft_base_is_valable(char *base, int len_base)
+static int	ft_base_is_valable(t_base base)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	if (len_base <= 1)
+	if (base.len <= 1)
 		return (-1);
-	while (i < len_base)
+	while (i < base.len)
 	{
-		if (base [i] == '-' || base[i] == '+')
+		if (base.str[i] == '-' || base.str[i] == '+')
 			return (-1);
 		j = i + 1;
-		while (j < len_base)
+		while (j < base.len)
 		{
-			if (base[i] == base[j])
+			if (base.str[i] == base.str[j])
 				return (-1);
 			j++;
 		}
@@ -57,29 +57,29 @@ static int	ft_base_is_valable(char *base, int len_base)
 	return (1);
 }
 
-//ne fonctoinne pas avec LONG_INT_MIN
-ssize_t	putnbr_base_fd(long int nb, char *base, int fd)
+ssize_t	putnb_base_fd(long long int nb, char *base_str, int fd)
 {
 	ssize_t	nb_char_writed;
-	size_t	len_base;
+	t_base	base;
 
-	len_base = ft_strlen(base);
-	if (ft_base_is_valable(base, len_base) == -1)
+	base.str = base_str;
+	base.len = ft_strlen(base_str);
+	if (ft_base_is_valable(base) == -1)
 		return (-1);
 	if (nb < 0)
 	{
 		if (write(fd, "-", 1) == -1)
 			return (-1);
-		nb_char_writed = ft_put_pos_nb(-nb, base, fd, len_base);
+		nb_char_writed = write_nb(-(unsigned long long int)nb, base, fd);
 		if (nb_char_writed == -1)
 			return (-1);
 		return (++nb_char_writed);
 	}
 	else
-		return (ft_put_pos_nb(nb, base, fd, len_base));
+		return (write_nb((unsigned long long int)nb, base, fd));
 }
 
 ssize_t	ft_putnbr_fd(int nb, int fd)
 {
-	return (ft_putnbr_in_base_fd(nb, "0123456789", fd));
+	return (putnb_base_fd(nb, "0123456789", fd));
 }
