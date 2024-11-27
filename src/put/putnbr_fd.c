@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   putnbr_fd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:54:40 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/27 11:53:13 by sminot           ###   ########.fr       */
+/*   Updated: 2024/11/27 21:07:37 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ ssize_t	write_nb(unsigned long long int nb, t_base base, int fd)
 {
 	ssize_t	nb_char_writed;
 
-	if (nb > base.len)
+	if (nb >= base.len)
 	{
 		nb_char_writed = write_nb(nb / base.len, base, fd);
 		if (nb_char_writed == -1)

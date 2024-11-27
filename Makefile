@@ -6,7 +6,7 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 14:53:08 by sminot            #+#    #+#              #
-#    Updated: 2024/11/27 11:54:33 by sminot           ###   ########.fr        #
+#    Updated: 2024/11/27 21:26:19 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,12 +84,12 @@ FILEB = $(addprefix $(LST_DIR), $(LST))
 OBJ_DIR = obj
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(FILE:.c=.o))
-OBJB = $(addprefix $(OBJ_DIR)/, $(FILEB:.c=.o))
 
-DEPS= $(OBJ:.o=.d) $(OBJB:.o=.d)
+
+DEPS= $(OBJ:.o=.d)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -MMD
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -MP -MD
 INCLUDE = include
 
 AR = ar -rsc
