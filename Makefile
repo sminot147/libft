@@ -6,11 +6,11 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 14:53:08 by sminot            #+#    #+#              #
-#    Updated: 2024/11/27 21:26:19 by sminot           ###   ########.fr        #
+#    Updated: 2024/12/09 11:38:21 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = libftprintf.a
 
 CHAR_DIR = src/char/
 
@@ -55,6 +55,7 @@ PUT = putchar_fd.c\
 	putstr_fd.c\
 	putnbr_fd.c\
 	putendl_fd.c\
+	ft_printf.c\
 
 STR_DIR = src/str/
 
@@ -78,13 +79,11 @@ FILE = $(addprefix $(CHAR_DIR), $(CHAR))\
 	$(addprefix $(MEM_DIR), $(MEM))\
 	$(addprefix $(PUT_DIR), $(PUT))\
 	$(addprefix $(STR_DIR), $(STR))\
-
-FILEB = $(addprefix $(LST_DIR), $(LST))
+	$(addprefix $(LST_DIR), $(LST))\
 
 OBJ_DIR = obj
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(FILE:.c=.o))
-
 
 DEPS= $(OBJ:.o=.d)
 
@@ -111,12 +110,6 @@ fclean : clean
 
 re : fclean all
 
-bonus : $(OBJ) $(OBJB)
-	$(AR) $(NAME) $(OBJ) $(OBJB)
-
 -include $(DEPS)
 
 .PHONY : all, clean, fclean, re, bonus
-
-#OBJ = $(subst $(SRC_DIR),$(SRC_OBJ),$(FILE:.c=.o))
-#Mettre un pip | pour regarder si la regle existe.

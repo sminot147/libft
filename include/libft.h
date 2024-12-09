@@ -73,6 +73,7 @@ ssize_t	putendl_fd(char *s, int fd);
 ssize_t	putnbr_fd(int n, int fd);
 ssize_t	putnb_base_fd(long long int nb, char *base, int fd);
 ssize_t	write_nb(unsigned long long int nb, t_base base, int fd);
+int		ft_printf(const char *format, ...);
 
 //lst
 
