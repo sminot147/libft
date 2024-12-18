@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <sminot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 13:18:08 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/18 19:58:06 by sminot           ###   ########.fr       */
+/*   Created: 2024/11/12 18:10:08 by sminot            #+#    #+#             */
+/*   Updated: 2024/12/18 14:34:49 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
+	t_list	*element;
+
 	if (!lst || !new)
 		return ;
-	if (!*lst)
+	if (*lst == NULL)
 		*lst = new;
-	else if ((*lst)->next == NULL)
-	{
-		(*lst)->next = new;
-	}
 	else
 	{
-		ft_lstadd_back(&(*lst)->next, new);
+		element = *lst;
+		*lst = new;
+		(*lst)->next = element;
 	}
 }

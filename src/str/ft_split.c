@@ -6,11 +6,12 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:31:48 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/21 04:44:14 by sminot           ###   ########.fr       */
+/*   Updated: 2024/12/18 14:37:07 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 
 static char	**complete_tab(char **tab, char const *str, char c, size_t nb_pass);
 static int	nb_str(char const *s, char c);

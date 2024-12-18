@@ -6,11 +6,12 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:54:40 by sminot            #+#    #+#             */
-/*   Updated: 2024/12/09 11:24:23 by sminot           ###   ########.fr       */
+/*   Updated: 2024/12/18 14:43:40 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 ssize_t	write_nb(unsigned long long int nb, t_base base, int fd)
 {

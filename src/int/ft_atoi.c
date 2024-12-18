@@ -6,11 +6,12 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 20:22:45 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/21 04:45:25 by sminot           ###   ########.fr       */
+/*   Updated: 2024/12/18 14:40:30 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 static int	result_overflow(int sgn);
 

@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <sminot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 17:34:35 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/12 18:07:40 by sminot           ###   ########.fr       */
+/*   Created: 2024/11/13 14:38:16 by sminot            #+#    #+#             */
+/*   Updated: 2024/12/18 14:34:52 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*lst;
+	t_list	*temp;
 
-	lst = ft_calloc(1, sizeof(t_list));
-	if (lst == NULL)
-		return (NULL);
-	lst->content = content;
-	return (lst);
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		temp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = temp;
+	}
+	*lst = NULL;
 }

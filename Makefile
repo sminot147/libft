@@ -6,7 +6,7 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 14:53:08 by sminot            #+#    #+#              #
-#    Updated: 2024/12/09 11:38:21 by sminot           ###   ########.fr        #
+#    Updated: 2024/12/18 14:33:51 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,15 +29,15 @@ INT = ft_atoi.c\
 
 LST_DIR = src/lst/
 
-LST = ft_lstnew_bonus.c\
-	ft_lstadd_front_bonus.c\
-	ft_lstsize_bonus.c\
-	ft_lstlast_bonus.c\
-	ft_lstadd_back_bonus.c\
-	ft_lstdelone_bonus.c\
-	ft_lstclear_bonus.c\
-	ft_lstiter_bonus.c\
-	ft_lstmap_bonus.c\
+LST = ft_lstnew.c\
+	ft_lstadd_front.c\
+	ft_lstsize.c\
+	ft_lstlast.c\
+	ft_lstadd_back.c\
+	ft_lstdelone.c\
+	ft_lstclear.c\
+	ft_lstiter.c\
+	ft_lstmap.c\
 
 MEM_DIR = src/mem/
 
@@ -88,7 +88,7 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(FILE:.c=.o))
 DEPS= $(OBJ:.o=.d)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -MP -MD
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -MMD
 INCLUDE = include
 
 AR = ar -rsc
@@ -112,4 +112,4 @@ re : fclean all
 
 -include $(DEPS)
 
-.PHONY : all, clean, fclean, re, bonus
+.PHONY : all, clean, fclean, re

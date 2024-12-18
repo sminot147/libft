@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <sminot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 13:04:39 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/13 14:47:44 by sminot           ###   ########.fr       */
+/*   Created: 2024/11/12 18:16:06 by sminot            #+#    #+#             */
+/*   Updated: 2024/12/18 14:35:04 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	if (lst == NULL)
-		return (NULL);
-	if (lst->next == NULL)
-		return (lst);
-	return (ft_lstlast(lst->next));
+		return (0);
+	return (1 + ft_lstsize(lst->next));
 }

@@ -6,11 +6,12 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 20:35:54 by sminot            #+#    #+#             */
-/*   Updated: 2024/11/27 14:37:53 by sminot           ###   ########.fr       */
+/*   Updated: 2024/12/18 14:43:01 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+
+#include <unistd.h>
 
 ssize_t	putchar_fd(char c, int fd)
 {
