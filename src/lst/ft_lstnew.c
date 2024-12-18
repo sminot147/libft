@@ -6,12 +6,11 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:34:35 by sminot            #+#    #+#             */
-/*   Updated: 2024/12/18 14:37:06 by sminot           ###   ########.fr       */
+/*   Updated: 2024/12/18 14:54:54 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 t_list	*ft_lstnew(void *content)
 {

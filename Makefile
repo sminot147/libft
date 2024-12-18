@@ -6,11 +6,11 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 14:53:08 by sminot            #+#    #+#              #
-#    Updated: 2024/12/18 14:33:51 by sminot           ###   ########.fr        #
+#    Updated: 2024/12/18 14:55:51 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = libft.a
 
 CHAR_DIR = src/char/
 
