@@ -37,7 +37,7 @@ void	*ft_memset(void *s, int c, size_t n);
 //int
 
 char	*ft_itoa(int n);
-int		ft_atoi(const char *str);
+long int		ft_atoi(const char *str);
 
 //str
 
