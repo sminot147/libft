@@ -6,22 +6,19 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 20:22:45 by sminot            #+#    #+#             */
-/*   Updated: 2024/12/18 19:22:02 by sminot           ###   ########.fr       */
+/*   Updated: 2024/12/18 19:39:39 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <limits.h>
-#include <unistd.h>
 
 //error value is set to INT_MAX + 1;
 static long int	result_overflow(void)
 {
 	long int	error;
 
-	error = INT_MAX;
-	error++;
-	write(2, "Error\n", 6);
+	error = (long int)INT_MAX + 1;
 	return (error);
 }
 
