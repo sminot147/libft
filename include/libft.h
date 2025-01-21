@@ -12,8 +12,9 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stdlib.h>
 
+# include <stdlib.h>
+# include <unistd.h>
 //is
 
 int		ft_isalnum(int c);
@@ -71,6 +72,17 @@ ssize_t	putnbr_fd(int n, int fd);
 ssize_t	putnb_base_fd(long long int nb, char *base, int fd);
 ssize_t	write_nb(unsigned long long int nb, t_base base, int fd);
 int		ft_printf(const char *format, ...);
+
+//gnl
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4095
+# endif
+
+char	*get_next_line(int fd);
+int		error_handling(char **line, char *buffer);
+void	str_append(char **str, char *buffer, size_t len_buf);
+size_t	size_beffor_new_line(char *buffer);
 
 //lst
 
