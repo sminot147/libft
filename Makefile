@@ -6,7 +6,7 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 14:53:08 by sminot            #+#    #+#              #
-#    Updated: 2025/01/21 11:05:13 by sminot           ###   ########.fr        #
+#    Updated: 2025/02/05 12:15:14 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CHAR = ft_isalpha.c\
 	ft_isascii.c\
 	ft_isdigit.c\
 	ft_isprint.c\
+	ft_isspace.c\
 	ft_toupper.c\
 	ft_tolower.c\
 
@@ -73,6 +74,7 @@ STR = ft_split.c\
 	ft_strrchr.c\
 	ft_strtrim.c\
 	ft_substr.c\
+	str_append.c\
 
 GNL_DIR = src/gnl/
 
