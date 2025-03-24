@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putstr_fd.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madelvin <madelvin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 19:55:04 by sminot            #+#    #+#             */
-/*   Updated: 2025/02/14 12:49:47 by madelvin         ###   ########.fr       */
+/*   Created: 2025/02/13 20:13:18 by madelvin          #+#    #+#             */
+/*   Updated: 2025/02/13 20:24:16 by madelvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-ssize_t	putstr_fd(char *s, int fd)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (!s)
-		return (write(fd, "(null)", 6));
-	return (write(fd, s, ft_strlen(s)));
+	size_t	i;
+
+	i = 0;
+	while ((s1[i] != '\0' && s2[i] != '\0'))
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	if (s1[i] != '\0')
+		return (s1[i]);
+	if (s2[i] != '\0')
+		return (s2[i]);
+	return (0);
 }

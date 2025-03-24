@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/05 11:29:18 by sminot            #+#    #+#             */
-/*   Updated: 2025/02/10 13:13:22 by sminot           ###   ########.fr       */
+/*   Created: 2024/09/09 20:34:03 by sminot            #+#    #+#             */
+/*   Updated: 2025/02/21 19:24:03 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(char c)
+#include "libft.h"
+
+char	*ft_strndup(const char *str, int n)
 {
-	if (c == ' ')
-		return (1);
-	if (9 <= c && c <= 13)
-		return (1);
-	return (0);
+	char	*dest;
+
+	dest = malloc((n + 1) * sizeof(char));
+	if (dest == NULL)
+		return (NULL);
+	ft_memcpy(dest, str, n);
+	dest[n] = '\0';
+	return (dest);
 }
