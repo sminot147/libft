@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 21:40:27 by sminot            #+#    #+#             */
-/*   Updated: 2025/01/21 10:52:03 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/25 21:56:11 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ static int	take_one_line(char **line, char *buffer, int fd)
 	i = size_beffor_new_line(buffer);
 	if (buffer[i++] == '\n')
 	{
-		str_append(line, buffer, i + 1);
+		str_n_append(line, buffer, i + 1);
 		ft_memcpy(buffer, buffer + i, BUFFER_SIZE + 1 - i);
 		return (1);
 	}
 	else
 	{
-		str_append(line, buffer, i);
+		str_n_append(line, buffer, i);
 		if (!*line)
 			return (-1);
 		size_read = read_buffer(buffer, fd);
